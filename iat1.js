@@ -26,8 +26,7 @@ define(['pipAPI','pipScorer','underscore'], function(APIConstructor, Scorer, _) 
 				background: '#ffffff',
 				borderWidth: 5,
 				canvasBackground: '#ffffff',
-				borderColor: 'lightblue',
-				css:{"touch-action": "manipulation"}
+				borderColor: 'lightblue'
 			},
 			category1 : {
 				name : 'Black people', //Will appear in the data and in the default feedback message.
@@ -152,8 +151,6 @@ define(['pipAPI','pipScorer','underscore'], function(APIConstructor, Scorer, _) 
 
 			fontColor : '#000000', //The default color used for printed messages.
 			
-			leftKey : 'e', 
-			rightKey: 'i',
 			//Text and style for key instructions displayed about the category labels.
 			leftKeyText : 'Press "E" for', 
 			rightKeyText : 'Press "I" for', 
@@ -315,14 +312,10 @@ define(['pipAPI','pipScorer','underscore'], function(APIConstructor, Scorer, _) 
 			//attribute1, and attribute2 will be replaced with the name of attribute1 and attribute2.
 			//categoryA is the name of the category that is found to be associated with attribute1,
 			//and categoryB is the name of the category that is found to be associated with attribute2.
-			//fb_strong_Att1WithCatA_Att2WithCatB : 'Your responses suggested a strong automatic preference for categoryB over categoryA.',
-			//fb_moderate_Att1WithCatA_Att2WithCatB : 'Your responses suggested a moderate automatic preference for categoryB over categoryA.',
-			//fb_slight_Att1WithCatA_Att2WithCatB : 'Your responses suggested a slight automatic preference for categoryB over categoryA.',
-			//fb_equal_CatAvsCatB : 'Your responses suggested no automatic preference between categoryA and categoryB.',
-			fb_strong_Att1WithCatA_Att2WithCatB : "You were much faster at sorting 'categoryA' with 'attribute1' and 'categoryB' with 'attribute2' than 'categoryB' with 'attribute1' and 'categoryA' with 'attribute2'",
-			fb_moderate_Att1WithCatA_Att2WithCatB : "You were moderately faster at sorting 'categoryA' with 'attribute1' and 'categoryB' with 'attribute2' than 'categoryB' with 'attribute1' and 'categoryA' with 'attribute2'",
-			fb_slight_Att1WithCatA_Att2WithCatB : "You were slightly faster at sorting 'categoryA' with 'attribute1' and 'categoryB' with 'attribute2' than 'categoryB' with 'attribute1' and 'categoryA' with 'attribute2'",
-			fb_equal_CatAvsCatB : "You were about equally fast at sorting 'categoryA' with 'attribute1' and 'categoryB' with 'attribute2' and at sorting 'categoryB' with 'attribute1' and 'categoryA' with 'attribute2'.",
+			fb_strong_Att1WithCatA_Att2WithCatB : 'Your responses suggested a strong automatic preference for categoryB over categoryA.',
+			fb_moderate_Att1WithCatA_Att2WithCatB : 'Your responses suggested a moderate automatic preference for categoryB over categoryA.',
+			fb_slight_Att1WithCatA_Att2WithCatB : 'Your responses suggested a slight automatic preference for categoryB over categoryA.',
+			fb_equal_CatAvsCatB : 'Your responses suggested no automatic preference between categoryA and categoryB.',
 
 			//Error messages in the feedback
 			manyErrors: 'There were too many errors made to determine a result.',
@@ -363,8 +356,8 @@ define(['pipAPI','pipScorer','underscore'], function(APIConstructor, Scorer, _) 
 		 * Create inputs
 		 */
 
-		var leftInput = !isTouch ? {handle:'left',on:'keypressed',key:piCurrent.leftKey} : {handle:'left',on:'click', stimHandle:'left'};
-		var rightInput = !isTouch ? {handle:'right',on:'keypressed',key:piCurrent.rightKey} : {handle:'right',on:'click', stimHandle:'right'};
+		var leftInput = !isTouch ? {handle:'left',on:'keypressed',key:'e'} : {handle:'left',on:'click', stimHandle:'left'};
+		var rightInput = !isTouch ? {handle:'right',on:'keypressed',key:'i'} : {handle:'right',on:'click', stimHandle:'right'};
 		var proceedInput = !isTouch ? {handle:'space',on:'space'} : {handle:'space',on:'bottomTouch', css:piCurrent.bottomTouchCss};
 
 		/**
@@ -1164,34 +1157,25 @@ define(['pipAPI','pipScorer','underscore'], function(APIConstructor, Scorer, _) 
 		});
 
 		//Helper function to set the feedback messages.
-		function getFB(inText, categoryA, categoryB, att1, att2)
+		function getFB(inText, categoryA, categoryB)
 		{
-			var retText = inText.replace(/attribute1/g, att1);
-			retText = retText.replace(/attribute2/g, att2);
+			var retText = inText.replace(/attribute1/g, att1.name);
+			retText = retText.replace(/attribute2/g, att2.name);
 			retText = retText.replace(/categoryA/g, categoryA);
 			retText = retText.replace(/categoryB/g, categoryB);
 			return retText;
 		}
 
-        //Updated in May, 2023.
-        //Let's show in the feedback the title used in the actual IAT, unless it was not defined (e.g., it was an image)
-        //let cat1Name = cat1?.title?.word || cat1.name;
-        //let cat2Name = cat2?.title?.word || cat2.name;
-        let cat1Name = (cat1.title == null || cat1.title.media.word == null) ? cat1.name : cat1.title.media.word;
-        let cat2Name = (cat2.title == null || cat2.title.media.word == null) ? cat2.name : cat2.title.media.word;
-        let att1Name = (att1.title == null || att1.title.media.word == null) ? att1.name : att1.title.media.word;
-        let att2Name = (att2.title == null || att2.title.media.word == null) ? att2.name : att2.title.media.word;
 		//Set the feedback messages.
 		var messageDef = [
-				{ cut:'-0.65', message : getFB(piCurrent.fb_strong_Att1WithCatA_Att2WithCatB, cat1Name, cat2Name, att1Name, att2Name) },
-				{ cut:'-0.35', message : getFB(piCurrent.fb_moderate_Att1WithCatA_Att2WithCatB, cat1Name, cat2Name, att1Name, att2Name) },
-				{ cut:'-0.15', message : getFB(piCurrent.fb_slight_Att1WithCatA_Att2WithCatB, cat1Name, cat2Name, att1Name, att2Name) },
-				{ cut:'0.15', message : getFB(piCurrent.fb_equal_CatAvsCatB, cat1Name, cat2Name, att1Name, att2Name) },
-				{ cut:'0.35', message : getFB(piCurrent.fb_slight_Att1WithCatA_Att2WithCatB, cat2Name, cat1Name, att1Name, att2Name) },
-				{ cut:'0.65', message : getFB(piCurrent.fb_moderate_Att1WithCatA_Att2WithCatB, cat2Name, cat1Name, att1Name, att2Name) },
-				{ cut:'5', message : getFB(piCurrent.fb_strong_Att1WithCatA_Att2WithCatB, cat2Name, cat1Name, att1Name, att2Name) }
+				{ cut:'-0.65', message : getFB(piCurrent.fb_strong_Att1WithCatA_Att2WithCatB, cat1.name, cat2.name) },
+				{ cut:'-0.35', message : getFB(piCurrent.fb_moderate_Att1WithCatA_Att2WithCatB, cat1.name, cat2.name) },
+				{ cut:'-0.15', message : getFB(piCurrent.fb_slight_Att1WithCatA_Att2WithCatB, cat1.name, cat2.name) },
+				{ cut:'0.15', message : getFB(piCurrent.fb_equal_CatAvsCatB, cat1.name, cat2.name) },
+				{ cut:'0.35', message : getFB(piCurrent.fb_slight_Att1WithCatA_Att2WithCatB, cat2.name, cat1.name) },
+				{ cut:'0.65', message : getFB(piCurrent.fb_moderate_Att1WithCatA_Att2WithCatB, cat2.name, cat1.name) },
+				{ cut:'5', message : getFB(piCurrent.fb_strong_Att1WithCatA_Att2WithCatB, cat2.name, cat1.name) }
 		];
-
 		var scoreMessageObject = { MessageDef : messageDef };
 		if (piCurrent.manyErrors !== '')
 		{
