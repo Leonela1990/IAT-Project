@@ -39,8 +39,8 @@ define(['managerAPI',
 	    
 	iat: [{
             type: 'time',
-            name: 'biat',
-            scriptUrl: 'BIAT.js'
+            name: 'iat',
+            scriptUrl: 'iat.js'
         }],
 
         socio_demografica: [{
@@ -93,11 +93,11 @@ define(['managerAPI',
         inherit: 'iat'
     },
     {
-        inherit: 'questionari'
+        inherit: 'socio_demografica'
     },
             
 	{inherit: 'uploading'},
-        {inherit: 'debriefing'}
+        {inherit: 'ringraziamento'}
     ]);
 
     return API.script;
