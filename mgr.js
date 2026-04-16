@@ -32,7 +32,7 @@ define(['managerAPI'], function(Manager){
         iat: [{
             type: 'time',
             name: 'iat',
-            scriptUrl: 'iat1.js'
+            scriptUrl: 'iat.js'
         }],
 
         socio_demografica: [{
