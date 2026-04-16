@@ -40,7 +40,7 @@ define(['managerAPI',
 	iat: [{
             type: 'time',
             name: 'iat',
-            scriptUrl: 'iat.js'
+            scriptUrl: 'iat1.js'
         }],
 
         socio_demografica: [{
