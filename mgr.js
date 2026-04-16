@@ -58,18 +58,18 @@ define(['managerAPI',
             scriptUrl: 'BIAT.js'
         }],
 
-        questionari: [{
+        socio_demografica: [{
             type: 'quest',
-            name: 'questionari',
-            scriptUrl: 'questionari.js',
+            name: 'socio_demografica',
+            scriptUrl: 'socio_demografica.js',
             title: 'Questionario',
             header: 'Questionario'
         }],
 	    
-        debriefing: [{
+        ringraziamento: [{
             type: 'quest',
-            name: 'debriefing',
-            scriptUrl: 'debriefing.js',
+            name: 'ringraziamento',
+            scriptUrl: 'ringraziamento.js',
             last: true
         }],	    
 
