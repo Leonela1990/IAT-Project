@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/minnojs/minno-quest@0.3/dist/main.css" />
+        <style type="text/css">
+            .container {padding-top: 15px;}
+        </style>
+
+        <script src="https://cdn.jsdelivr.net/gh/minnojs/minno-quest@0.3/dist/pi-minno.js"></script>
+        
+        <script>
+            // Carichiamo il test non appena il documento è pronto
+            document.addEventListener("DOMContentLoaded", function(){
+                var container = document.createElement('div');
+                container.className = 'container';
+
+                var canvas = document.createElement('div');
+                container.appendChild(canvas);
+                document.body.appendChild(container);
+
+                // Avvia il test puntando al tuo file mgr.js
+                minnoJS(canvas, 'mgr.js');
+                minnoJS.onEnd = function () { 
+                    console.log("Test terminato"); 
+                };
+            });
+        </script>
+    </head>
+    <body></body>
+</html>
