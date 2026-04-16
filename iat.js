@@ -13,23 +13,20 @@ define(['pipAPI' ,'https://cdn.jsdelivr.net/gh/baranan/minno-tasks@0.*/IAT/iat9.
         },
         "stimulusMedia": [
             {
-                "word": "Tayron"
+                "word": "Google Ads"
             },
             {
-                "word": "Malik"
+                "word": "Facebook Ads"
             },
             {
-                "word": "Terrell"
+                "word": "LinkedIn Ads"
             },
             {
-                "word": "Jazamin"
+                "word": "TikTok Ads"
             },
             {
-                "word": "Tiara"
+                "word": "Programmatic"
             },
-            {
-                "word": "Shanice"
-            }
         ],
         "stimulusCss": {
             "color": "#336600",
@@ -50,23 +47,20 @@ define(['pipAPI' ,'https://cdn.jsdelivr.net/gh/baranan/minno-tasks@0.*/IAT/iat9.
         },
         "stimulusMedia": [
             {
-                "word": "Jake"
+                "word": "SEO"
             },
             {
-                "word": "Conor"
+                "word": "Blog post"
             },
             {
-                "word": "Bradley"
+                "word": "Social content"
             },
             {
-                "word": "Allison"
+                "word": "Newsletter"
             },
             {
-                "word": "Emma"
+                "word": "Link building"
             },
-            {
-                "word": "Emily"
-            }
         ],
         "stimulusCss": {
             "color": "#336600",
@@ -87,29 +81,24 @@ define(['pipAPI' ,'https://cdn.jsdelivr.net/gh/baranan/minno-tasks@0.*/IAT/iat9.
         },
         "stimulusMedia": [
             {
-                "word": "Awful"
+                "word": "Conversione"
             },
             {
-                "word": "Failure"
+                "word": "ROI"
             },
             {
-                "word": "Agony"
+                "word": "Ottimizzazione"
             },
             {
-                "word": "Hurt"
+                "word": "Crescita"
             },
             {
-                "word": "Horrible"
+                "word": "Analisi"
             },
             {
-                "word": "Terrible"
+                "word": "Successo"
             },
-            {
-                "word": "Nasty"
-            },
-            {
-                "word": "Evil"
-            }
+
         ],
         "stimulusCss": {
             "color": "#0000FF",
@@ -130,29 +119,23 @@ define(['pipAPI' ,'https://cdn.jsdelivr.net/gh/baranan/minno-tasks@0.*/IAT/iat9.
         },
         "stimulusMedia": [
             {
-                "word": "Laughter"
+                "word": "Churn"
             },
             {
-                "word": "Happy"
+                "word": "Perdita"
             },
             {
-                "word": "Glorious"
+                "word": "Dispersione"
             },
             {
-                "word": "Joy"
+                "word": "Errore"
             },
             {
-                "word": "Wonderful"
+                "word": "Lentezza"
             },
             {
-                "word": "Peace"
+                "word": "Stasi"
             },
-            {
-                "word": "Pleasure"
-            },
-            {
-                "word": "Love"
-            }
         ],
         "stimulusCss": {
             "color": "#0000FF",
