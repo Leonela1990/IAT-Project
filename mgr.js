@@ -37,21 +37,6 @@ define(['managerAPI',
             piTemplate: true
         }],
 	    
-        practice_instructions: [{
-            inherit: 'instructions',
-            name: 'practice_instructions',
-            templateUrl: 'practice_instructions.jst',
-            title: 'Istruzioni',
-            buttonText: 'Continua',
-            piTemplate: true
-        }],
-	    
-	practice: [{
-            type: 'time',
-            name: 'practice',
-            scriptUrl: 'practice.js'
-        }],
-	    
 	iat: [{
             type: 'time',
             name: 'biat',
@@ -95,7 +80,7 @@ define(['managerAPI',
             ],
             data: [
                     {
-                        inherit: 'practice_instructions'
+                        inherit: 'iat_instructions'
                     }
             ],
             elseData: [// if participants does not agree to participate, they are redirected.
@@ -103,12 +88,6 @@ define(['managerAPI',
                     inherit: 'redirect'
                 }
             ]
-    },
-    {
-        inherit: 'practice'
-    },
-    {
-        inherit: 'iat_instructions'
     },
     {
         inherit: 'iat'
