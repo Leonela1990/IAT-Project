@@ -82,25 +82,27 @@ define(['managerAPI',
                     {
                         inherit: 'iat_instructions'
                     },
-					{
-	        			inherit: 'iat'
-	   				 },
-				    {
-				        inherit: 'socio_demografica'
-				    },
-					{
-						inherit: 'uploading'
-					},
-			        {
-						inherit: 'ringraziamento'
-					}	
+						
             ],
             elseData: [// if participants does not agree to participate, they are redirected.
                 {
                     inherit: 'redirect'
                 }
             ]
-    	},
+		},
+		{
+	    	inherit: 'iat'
+		 },
+	    {
+	        inherit: 'socio_demografica'
+	    },
+		{
+			inherit: 'uploading'
+		},
+        {
+			inherit: 'ringraziamento'
+		}
+    	
     ]);
 
     return API.script;
