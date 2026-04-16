@@ -1,15 +1,6 @@
-define(['managerAPI',
-		'https://cdn.jsdelivr.net/gh/minnojs/minno-datapipe@1.*/datapipe.min.js'], function(Manager){
+define(['managerAPI'], function(Manager){
 
-
-	//You can use the commented-out code to get parameters from the URL.
-	//const queryString = window.location.search;
-    //const urlParams = new URLSearchParams(queryString);
-    //const pt = urlParams.get('pt');
-
-	var API    = new Manager();
-	//const subid = Date.now().toString(16)+Math.floor(Math.random()*10000).toString(16);
-	init_data_pipe(API, 'efCj328MzgpQ', {file_type:'csv'});	
+    var API = new Manager();
 
     API.setName('mgr');
     API.addSettings('skip',true);
@@ -21,12 +12,13 @@ define(['managerAPI',
         }],
 
         consent: [{
-		type: 'quest', 
-		name: 'consent', 
-		scriptUrl: 'consent.js', 
-		header: 'Consent', 
-		title: 'Consenso Informato', 
-		buttonText: 'Invia' }],	    
+            type: 'quest', 
+            name: 'consent', 
+            scriptUrl: 'consent.js', 
+            header: 'Consent', 
+            title: 'Consenso Informato', 
+            buttonText: 'Invia' 
+        }],    
 
         iat_instructions: [{
             inherit: 'instructions',
@@ -36,8 +28,8 @@ define(['managerAPI',
             buttonText: 'Continua',
             piTemplate: true
         }],
-	    
-	iat: [{
+        
+        iat: [{
             type: 'time',
             name: 'iat',
             scriptUrl: 'iat1.js'
@@ -50,59 +42,38 @@ define(['managerAPI',
             title: 'Questionario',
             header: 'Questionario'
         }],
-	    
+        
         ringraziamento: [{
             type: 'quest',
             name: 'ringraziamento',
             scriptUrl: 'ringraziamento.js',
             last: true
-        }],	    
+        }],    
 
-          
         redirect: [{ 
-	    type:'redirect',
-	    name:'redirect', 
-	    url: 'https://www.google.com' 
-        }],
-		
-		//This task waits until the data are sent to the server.
-        uploading: uploading_task({header: 'Solo un momento...', body:'Si prega di attendere il salvataggio dei dati.'})
+            type:'redirect',
+            name:'redirect', 
+            url: 'https://www.google.com' 
+        }]
     });
 
     API.addSequence([
-         
-        
         {inherit: 'consent'},
         {
-            mixer: 'branch',// if participants choose "I decline", they are taken to a transition page telling them they are being redirected
+            mixer: 'branch',
             conditions: [
-                function(){ return piGlobal.consent.questions.userconsent.response === true;} // if the question name or response options were changed in consent.js, adapt this too 
+                function(){ return piGlobal.consent.questions.userconsent.response === true;} 
             ],
             data: [
-                    {
-                        inherit: 'iat_instructions'
-                    },
-						
+                {inherit: 'iat_instructions'},
+                {inherit: 'iat'},
+                {inherit: 'socio_demografica'},
+                {inherit: 'ringraziamento'}
             ],
-            elseData: [// if participants does not agree to participate, they are redirected.
-                {
-                    inherit: 'redirect'
-                }
+            elseData: [
+                {inherit: 'redirect'}
             ]
-		},
-		{
-	    	inherit: 'iat'
-		 },
-	    {
-	        inherit: 'socio_demografica'
-	    },
-		{
-			inherit: 'uploading'
-		},
-        {
-			inherit: 'ringraziamento'
-		}
-    	
+        }
     ]);
 
     return API.script;
