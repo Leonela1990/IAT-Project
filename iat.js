@@ -160,7 +160,7 @@ define(['pipAPI' ,'./iat_extension.js'], function(APIConstructor, iatExtension) 
     "blockSwitch_nMiniBlocks": 7,
     "randomBlockOrder": true,
     "randomAttSide": false,
-    "remindErrorText": "<p style=\"font-size:1em;font-family:arial serif;text-align:center;\">Se commetti un errore, apparirà una <font-color=\"#ff0000\"><b>X</b></font> rossa. Premi l'altro tasto per continuare.<p/>",
+    "remindErrorText": "<p style=\"font-size:16px;font-family:arial serif;text-align:center;\">Se commetti un errore, apparirà una <font color=\"#ff0000\"><b>X</b></font> rossa. Premi l'altro tasto per continuare.<p/>",
     "leftKeyText": "Premi \"E\" per",
     "rightKeyText": "Premi \"I\" per",
     "orText": "o",
