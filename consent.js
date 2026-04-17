@@ -32,11 +32,11 @@ define(['questAPI'], function(Quest){
           stem: `
             <article>
               <h1>Consenso Informato alla Partecipazione alla Ricerca</h1>
-              <h6>Scopo della ricerca</h6>
+              <h4>Scopo della ricerca</h4>
               <p>La presente indagine ha l'obiettivo di analizzare i processi decisionali e le associazioni cognitive nel contesto del Digital Marketing.</p>
-              <h6>Procedura</h6>
+              <h4>Procedura</h4>
               <p>La partecipazione prevede il completamento di un compito di associazione rapida al computer. La durata complessiva è di circa 10-15 minuti.</p>
-              <h6>Trattamento dei dati</h6>
+              <h4>Trattamento dei dati</h4>
               <p>Il progetto rispetta la normativa vigente:</p>
               <ul>
                 <li>Dati trattati in forma anonima e aggregata.</li>
